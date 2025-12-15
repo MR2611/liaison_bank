@@ -1,22 +1,50 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { ChevronDown, ArrowRight, Sparkles, Award, Users, Check, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import {
+  ChevronDown,
+  ArrowRight,
+  Sparkles,
+  Award,
+  Users,
+  Check,
+  Zap,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import NavigationBar from "../Components/Header";
 import Footer from "../Components/Footer";
-import HiringWidget from '../Components/HiringWidget';
+import HiringWidget from "../Components/HiringWidget";
 
 const AnnouncementBar = () => {
   return (
     <div className="w-full bg-white border-b border-yellow-400 overflow-hidden mt-20">
-      <div className="flex items-center h-12">
-        <div className="bg-yellow-400 text-white font-semibold px-6 h-full flex items-center whitespace-nowrap">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:h-12">
+        {/* LABEL */}
+        <div
+          className="
+          bg-yellow-400 text-white font-semibold
+          px-6 py-2 sm:py-0
+          sm:h-full
+          flex items-center
+          whitespace-nowrap
+          shrink-0
+        "
+        >
           Our new branch is opening soon
         </div>
 
-        <div className="relative flex-1 overflow-hidden">
-          <div className="absolute left-full whitespace-nowrap animate-marquee text-gray-800 font-medium">
-            Our new branch is opening soon in Andheri (East), Mumbai – 400059.
-            &nbsp;•&nbsp;
-            Our new branch is opening soon in Andheri (East), Mumbai – 400059.
+        {/* MARQUEE */}
+        <div className="relative w-full sm:flex-1 overflow-hidden">
+          <div
+            className="
+            whitespace-nowrap
+            animate-marquee
+            text-gray-800 font-medium
+            px-4 py-2 sm:py-0
+          "
+          >
+            Unit No.3 Entire 3rd floor Lok Bhavan, Lok Bharti Complex, Lok
+            Bharti Road, Off Marol Maroshi Road Marol Andheri (East), Mumbai -
+            400059.
           </div>
         </div>
       </div>
@@ -30,8 +58,8 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -60,20 +88,25 @@ const HeroSection = () => {
           </div>
 
           <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight">
-            Streamline Your{' '}
+            Streamline Your{" "}
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               License Acquisitions
             </span>
           </h1>
 
           <p className="text-xl text-gray-300 leading-relaxed">
-            Navigate the complexities with expert guidance. Secure all your essential licenses with our comprehensive, end-to-end acquisition services.
+            Navigate the complexities with expert guidance. Secure all your
+            essential licenses with our comprehensive, end-to-end acquisition
+            services.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
             <button className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-8 py-4 rounded-full hover:shadow-2xl hover:scale-105 transition-all font-semibold flex items-center gap-2">
               Our Expertise
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={20}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </button>
             <button className="bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full hover:bg-white/20 transition-all font-semibold border border-white/20">
               About Us
@@ -111,6 +144,7 @@ const HeroSection = () => {
 };
 
 // About Section Component
+
 const AboutSection = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
@@ -118,41 +152,71 @@ const AboutSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity blur-xl"></div>
-            <img
-              src="/Well Intro.webp"
-              alt="Team collaboration"
-              className="relative rounded-2xl shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-300"
-            />
-            <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-yellow-400 to-yellow-500 text-white p-8 rounded-2xl shadow-2xl">
-              <div className="text-5xl font-bold mb-1">16</div>
-              <div className="text-sm opacity-90 font-medium">Years of</div>
-              <div className="text-sm opacity-90 font-medium">Expertise</div>
+
+          {/* IMAGE + CARD */}
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-2xl opacity-20 blur-xl"></div>
+
+            {/* WELL INTRO IMAGE – APPEAR FROM LEFT */}
+            <div className="animate-appear-left">
+              <img
+                src="/Well Intro.webp"
+                alt="Team collaboration"
+                className="relative rounded-2xl shadow-2xl"
+              />
+            </div>
+
+            {/* FLIP + SHAKE CARD */}
+            <div className="absolute -bottom-6 -right-6 perspective-[1000px]">
+              <div className="relative w-44 h-44 animate-shake">
+                <div className="relative w-full h-full animate-flip transform-style-preserve-3d">
+
+                  {/* FRONT */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-500 text-white p-8 rounded-2xl shadow-2xl flex flex-col items-center justify-center flip-face">
+                    <div className="text-5xl font-bold mb-1">16</div>
+                    <div className="text-sm opacity-90 font-medium">Years of</div>
+                    <div className="text-sm opacity-90 font-medium">Expertise</div>
+                  </div>
+
+                  {/* BACK */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6 rounded-2xl shadow-2xl flex flex-col items-center justify-center rotate-y-180 flip-face">
+                    <div className="text-lg font-bold mb-1">Trusted Since</div>
+                    <div className="text-3xl font-extrabold text-yellow-400">
+                      2008
+                    </div>
+                    <div className="text-xs opacity-80 mt-1">
+                      Across Industries
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             </div>
           </div>
 
+          {/* TEXT CONTENT */}
           <div className="space-y-6">
-            <div className="inline-block">
-              <span className="text-yellow-500 font-bold text-sm tracking-wider uppercase bg-yellow-50 px-4 py-2 rounded-full">
-                Welcome to Liaison Bank
-              </span>
-            </div>
+            <span className="inline-block text-yellow-500 font-bold text-sm tracking-wider uppercase bg-yellow-50 px-4 py-2 rounded-full">
+              Welcome to Liaison Bank
+            </span>
 
             <h2 className="text-5xl font-bold text-gray-900 leading-tight">
-              Your Partner in{' '}
+              Your Partner in{" "}
               <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
                 Licensing & Liaisoning
               </span>
             </h2>
 
             <p className="text-gray-600 text-lg leading-relaxed">
-              We take care of the intricacies and uncertainties, allowing you to redirect your energy towards your core priorities and business objectives. This ensures a smoother and more efficient experience.
+              We take care of the intricacies and uncertainties, allowing you to
+              redirect your energy towards your core priorities and business
+              objectives.
             </p>
 
             <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-400 p-6 rounded-r-xl">
-              <p className="text-gray-700 italic text-lg leading-relaxed mb-4">
-                "It's not about waiting for things to fall into place. It's about making things fall in place by yourself."
+              <p className="text-gray-700 italic text-lg mb-4">
+                "It's not about waiting for things to fall into place. It's
+                about making things fall in place by yourself."
               </p>
 
               <div className="flex items-center">
@@ -163,16 +227,17 @@ const AboutSection = () => {
                 />
                 <div>
                   <p className="font-bold text-gray-900">Deva Biradar</p>
-                  <p className="text-sm text-gray-600">Founder & CEO</p>
+                  <p className="text-sm text-gray-600">CEO, Liaison Bank</p>
                 </div>
               </div>
             </div>
 
             <button className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-8 py-4 rounded-full hover:shadow-2xl hover:scale-105 transition-all font-semibold flex items-center gap-2">
               CEO's Desk
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
+
         </div>
       </div>
     </section>
@@ -206,7 +271,9 @@ const PromotionSection = () => {
   return (
     <section className="py-16 sm:py-24 bg-gradient-to-br from-yellow-50 via-white to-orange-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative">
-
+        <h2 className="text-center text-3xl sm:text-4xl font-semibold text-gray-500 mb-12">
+          Promotional Area
+        </h2>
         <div
           className="relative overflow-hidden rounded-3xl shadow-2xl
                      h-[380px] sm:h-[450px] lg:h-[550px]"
@@ -217,9 +284,10 @@ const PromotionSection = () => {
             <div
               key={index}
               className={`absolute inset-0 transition-all duration-700 ease-in-out
-                ${index === currentSlide
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-10"
+                ${
+                  index === currentSlide
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-10"
                 }`}
             >
               <img
@@ -297,9 +365,10 @@ const PromotionSection = () => {
                 onClick={() => setCurrentSlide(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 className={`rounded-full transition-all
-                  ${i === currentSlide
-                    ? "w-8 sm:w-10 h-3 bg-yellow-400"
-                    : "w-3 h-3 bg-white/60 hover:bg-white"
+                  ${
+                    i === currentSlide
+                      ? "w-8 sm:w-10 h-3 bg-yellow-400"
+                      : "w-3 h-3 bg-white/60 hover:bg-white"
                   }`}
               />
             ))}
@@ -314,25 +383,25 @@ const PromotionSection = () => {
 const ExpertiseSection = () => {
   const expertiseItems = [
     {
-      title: 'Residential',
-      image: '/Experties/Residentials.webp',
-      description: 'Complete licensing solutions for residential projects'
+      title: "Residential",
+      image: "/Experties/Residentials.webp",
+      description: "Complete licensing solutions for residential projects",
     },
     {
-      title: 'Garment Manufacturing Units & Other Industrial Units',
-      image: '/Experties/Garments.webp',
-      description: 'Specialized services for manufacturing facilities'
+      title: "Garment Manufacturing Units & Other Industrial Units",
+      image: "/Experties/Garments.webp",
+      description: "Specialized services for manufacturing facilities",
     },
     {
-      title: 'Hospitals & Nursing Homes',
-      image: '/Experties/Hospitals.webp',
-      description: 'Healthcare facility licensing and compliance'
+      title: "Hospitals & Nursing Homes",
+      image: "/Experties/Hospitals.webp",
+      description: "Healthcare facility licensing and compliance",
     },
     {
-      title: 'Hospitality',
-      image: '/Experties/Hospitality.webp',
-      description: 'Hotel and restaurant licensing services'
-    }
+      title: "Hospitality",
+      image: "/Experties/Hospitality.webp",
+      description: "Hotel and restaurant licensing services",
+    },
   ];
 
   return (
@@ -347,14 +416,20 @@ const ExpertiseSection = () => {
                 What We Do
               </span>
             </div>
-            <h2 className="text-5xl font-bold text-gray-900 mb-4">Our Expertise</h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-4">
+              Our Expertise
+            </h2>
             <p className="text-gray-600 text-lg">
-              We bring our expertise to multiple sectors and create customized solutions for diverse business needs.
+              We bring our expertise to multiple sectors and create customized
+              solutions for diverse business needs.
             </p>
           </div>
           <button className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-8 py-4 rounded-full hover:shadow-2xl hover:scale-105 transition-all font-semibold flex items-center gap-2">
             View All
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight
+              size={20}
+              className="group-hover:translate-x-1 transition-transform"
+            />
           </button>
         </div>
 
@@ -373,8 +448,12 @@ const ExpertiseSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform group-hover:translate-y-0 transition-transform">
-                <h3 className="text-xl font-bold mb-2 leading-tight">{item.title}</h3>
-                <p className="text-sm opacity-90 leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-bold mb-2 leading-tight">
+                  {item.title}
+                </h3>
+                <p className="text-sm opacity-90 leading-relaxed">
+                  {item.description}
+                </p>
               </div>
               <div className="absolute top-6 right-6 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform scale-0 group-hover:scale-100">
                 <ArrowRight className="text-white" size={20} />
@@ -388,36 +467,37 @@ const ExpertiseSection = () => {
 };
 
 // Services Section Component
+
 const ServicesSection = () => {
   const leftServices = [
     {
-      title: 'Asset Management & Regularization',
+      title: "Asset Management & Regularization",
       description:
-        'We specialize in providing solutions for regulatory issues faced by residential buildings. We navigate compliances and ensure all necessary regulations are met.'
+        "We specialize in providing solutions for regulatory issues faced by residential buildings. We navigate compliances and ensure all necessary regulations are met.",
     },
     {
-      title: 'Licence Procurement',
+      title: "Licence Procurement",
       description:
-        'Our skilled team handles the intricacies of obtaining licences to save time and provide a seamless experience.'
+        "Our skilled team handles the intricacies of obtaining licences to save time and provide a seamless experience.",
     },
     {
-      title: 'Tailor Made Permissions',
+      title: "Tailor Made Permissions",
       description:
-        'Be it hosting events or obtaining certificates, we help you acquire all required approvals.'
-    }
+        "Be it hosting events or obtaining certificates, we help you acquire all required approvals.",
+    },
   ];
 
   const rightServices = [
     {
-      title: 'Energy Savings',
+      title: "Energy Savings",
       description:
-        'We empower enterprises to leverage Piped Natural Gas (PNG) for higher cost competitiveness.'
+        "We empower enterprises to leverage Piped Natural Gas (PNG) for higher cost competitiveness.",
     },
     {
       title: "Compliance For SME's",
       description:
-        'We provide SMEs with end-to-end compliance solutions to meet safety and regulatory requirements.'
-    }
+        "We provide SMEs with end-to-end compliance solutions to meet safety and regulatory requirements.",
+    },
   ];
 
   return (
@@ -425,39 +505,46 @@ const ServicesSection = () => {
       <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-yellow-400/5 rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Heading */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-4">
-            <span className="text-yellow-500 font-bold text-sm tracking-wider uppercase bg-white px-4 py-2 rounded-full shadow-sm">
-              Our Services
-            </span>
-          </div>
-          <h2 className="text-5xl font-bold text-gray-900 mb-4">
+          <span className="inline-block mb-4 text-yellow-500 font-bold text-sm tracking-wider uppercase bg-white px-4 py-2 rounded-full shadow-sm">
+            Our Services
+          </span>
+          <h2 className="text-5xl font-bold text-gray-900">
             What We Provide
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12 items-center">
+          {/* LEFT SERVICES */}
           <div className="space-y-8">
             {leftServices.map((service, index) => (
               <ServiceItem key={index} {...service} />
             ))}
           </div>
 
+          {/* IMAGE + BADGE */}
           <div className="flex justify-center">
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl opacity-20 group-hover:opacity-30 transition-opacity blur-2xl"></div>
+            <div className="relative animate-appear-right">
+              <div className="absolute -inset-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl opacity-20 blur-2xl"></div>
+
               <img
                 src="/Services.webp"
                 alt="Services"
-                className="relative rounded-3xl shadow-2xl w-full max-w-sm object-cover transform group-hover:scale-[1.02] transition-transform duration-300"
+                className="relative rounded-3xl shadow-2xl w-full max-w-sm object-cover"
               />
+
+              {/* EXPERT STRATEGIES BADGE */}
               <div className="absolute -bottom-8 -right-8 bg-gradient-to-br from-yellow-400 to-yellow-500 p-6 rounded-2xl shadow-2xl max-w-[180px]">
                 <Zap className="text-white mb-2" size={32} />
-                <span className="text-white text-lg font-bold leading-tight block">Expert Strategies</span>
+                <span className="text-white text-lg font-bold leading-tight block typewriter">
+                  Expert Strategies
+                </span>
               </div>
             </div>
           </div>
 
+          {/* RIGHT SERVICES */}
           <div className="space-y-8">
             {rightServices.map((service, index) => (
               <ServiceItem key={index} {...service} />
@@ -478,12 +565,13 @@ const ServiceItem = ({ title, description }) => (
       <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-yellow-500 transition-colors">
         {title}
       </h3>
-      <p className="text-gray-600 leading-relaxed">
-        {description}
-      </p>
+      <p className="text-gray-600 leading-relaxed">{description}</p>
     </div>
   </div>
 );
+
+const CARD_WIDTH = 192; // w-48
+const GAP = 24; // gap-6 (6 * 4px)
 
 const ClientsSection = () => {
   const logos = useMemo(() => {
@@ -494,88 +582,95 @@ const ClientsSection = () => {
     return Object.values(files).map((f) => f.default);
   }, []);
 
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const containerRef = useRef(null);
+  const [cardsPerView, setCardsPerView] = useState(1);
+  const [page, setPage] = useState(0);
 
-  // responsive visible count
-  const getVisibleCount = () => {
-    if (window.innerWidth >= 1280) return 6; // xl
-    if (window.innerWidth >= 1024) return 5; // lg
-    if (window.innerWidth >= 768) return 4;  // md
-    if (window.innerWidth >= 640) return 3;  // sm
-    return 2; // mobile
-  };
-
-  const [visibleCount, setVisibleCount] = useState(getVisibleCount);
-
+  // calculate how many FIXED cards fit
   useEffect(() => {
-    const onResize = () => setVisibleCount(getVisibleCount());
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    const calculate = () => {
+      if (!containerRef.current) return;
+
+      const containerWidth = containerRef.current.offsetWidth;
+      const totalCardWidth = CARD_WIDTH + GAP;
+      const visible = Math.max(1, Math.floor(containerWidth / totalCardWidth));
+
+      setCardsPerView(visible);
+      setPage(0); // reset safely on resize
+    };
+
+    calculate();
+    window.addEventListener("resize", calculate);
+    return () => window.removeEventListener("resize", calculate);
   }, []);
 
+  const totalPages = Math.ceil(logos.length / cardsPerView);
+
+  // auto slide ONLY if overflow exists
   useEffect(() => {
-    if (!logos.length || paused) return;
+    if (totalPages <= 1) return;
 
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % logos.length);
-    }, 2500);
+      setPage((p) => (p + 1) % totalPages);
+    }, 3000);
 
     return () => clearInterval(timer);
-  }, [logos.length, paused]);
+  }, [totalPages]);
 
   if (!logos.length) return null;
 
-  const itemWidth = 100 / visibleCount;
-
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-center text-3xl sm:text-4xl font-semibold text-gray-500 mb-12">
+          Our Latest Clients
+        </h2>
 
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <span className="inline-block mb-4 text-yellow-500 font-bold text-sm tracking-wider uppercase bg-yellow-50 px-4 py-2 rounded-full">
-            Trusted By
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-3">
-            Our Latest Clients
-          </h2>
-          <p className="text-gray-600 text-base sm:text-lg">
-            Partnering with industry leaders to deliver excellence
-          </p>
-        </div>
-
-        {/* Slider */}
-        <div
-          className="overflow-hidden"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
+        {/* ONE ROW – FIXED SIZE CARDS */}
+        <div ref={containerRef} className="overflow-hidden">
           <div
-            className="flex transition-transform duration-700 ease-in-out"
+            className="flex flex-nowrap gap-6 transition-transform duration-500"
             style={{
-              transform: `translateX(-${index * itemWidth}%)`,
-              width: `${(logos.length * 100) / visibleCount}%`,
+              transform: `translateX(-${
+                page * cardsPerView * (CARD_WIDTH + GAP)
+              }px)`,
             }}
           >
             {logos.map((logo, i) => (
               <div
                 key={i}
-                className="flex items-center justify-center px-4"
-                style={{ width: `${itemWidth}%` }}
+                className="
+                  flex-shrink-0
+                  w-48 h-36
+                  flex items-center justify-center
+                  border-2 border-yellow-400
+                  rounded-2xl bg-white
+                "
               >
-                <div className="w-full h-28 flex items-center justify-center bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-lg transition">
-                  <img
-                    src={logo}
-                    alt={`Client ${i + 1}`}
-                    className="max-h-16 object-contain grayscale hover:grayscale-0 transition duration-300"
-                  />
-                </div>
+                <img
+                  src={logo}
+                  alt={`Client ${i + 1}`}
+                  className="max-h-20 object-contain"
+                />
               </div>
             ))}
           </div>
         </div>
 
+        {/* DOTS – ONLY IF OVERFLOW */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-4 gap-2">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPage(i)}
+                className={`w-2.5 h-2.5 rounded-full transition cursor-pointer
+                  ${i === page ? "bg-blue-500" : "bg-blue-200"}`}
+                aria-label={`Go to page ${i + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

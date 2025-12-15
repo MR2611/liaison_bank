@@ -116,7 +116,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className="bg-gradient-to-r from-yellow-400/10 to-orange-400/10 backdrop-blur-sm rounded-2xl p-8 mb-12 border border-yellow-400/20">
+        {/* <div className="bg-gradient-to-r from-yellow-400/10 to-orange-400/10 backdrop-blur-sm rounded-2xl p-8 mb-12 border border-yellow-400/20">
           <div className="max-w-2xl mx-auto text-center">
             <h4 className="text-2xl font-bold text-white mb-3">Stay Updated</h4>
             <p className="text-gray-400 mb-6">Subscribe to our newsletter for the latest updates and insights</p>
@@ -131,7 +131,7 @@ const Footer = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8">
